@@ -62,24 +62,24 @@ void crash_screen_draw_square(u16 *framebuffer, SDL_Window *window, SDL_Surface 
                 framebuffer[row * 320 + column] = s0_end - s2_start == 6 ? 0xF801 : 0xFFFF;
 
 
-                // blit16To32(surface16, SDL_GetWindowSurface(window));
-                // SDL_UpdateWindowSurface(window);
+                blit16To32(surface16, SDL_GetWindowSurface(window));
+                SDL_UpdateWindowSurface(window);
 
-                // int waitingForSpace = 1;
-                // while (waitingForSpace) {
-                //     SDL_Event event;
-                //     while (SDL_PollEvent(&event)) {
-                //         if (event.type == SDL_QUIT) {
-                //             waitingForSpace = 0;
-                //             SDL_Quit();
-                //             exit(0);
-                //         } else if (event.type == SDL_KEYDOWN) {
-                //             if (event.key.keysym.sym == SDLK_SPACE) {
-                //                 waitingForSpace = 0;
-                //             }
-                //         }
-                //     }
-                // }
+                int waitingForSpace = 1;
+                while (waitingForSpace) {
+                    SDL_Event event;
+                     while (SDL_PollEvent(&event)) {
+                         if (event.type == SDL_QUIT) {
+                             waitingForSpace = 0;
+                             SDL_Quit();
+                             exit(0);
+                         } else if (event.type == SDL_KEYDOWN) {
+                             if (event.key.keysym.sym == SDLK_SPACE) {
+                                 waitingForSpace = 0;
+                             }
+                         }
+                     }
+                 }
 
             }
         }
