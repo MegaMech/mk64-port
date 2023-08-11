@@ -1,4 +1,6 @@
 # mk64 port
+Run in `x64 Native Tools Command Prompt for VS 2022`
+Note the `x64` part.
 ```
 cl /I"C:\SDL2\include" draw_square.c /link /LIBPATH:"C:\SDL2\lib\x64" SDL2.lib SDL2main.lib
 ```
